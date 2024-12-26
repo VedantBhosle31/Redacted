@@ -1,0 +1,10 @@
+transformers
+torch
+datasets
+pillow
+numpy
+pdf2image
+pytesseract
+langchain-groq
+streamlit
+python-dotenv
