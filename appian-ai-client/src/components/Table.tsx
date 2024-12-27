@@ -4,45 +4,45 @@ const Table = () => {
 
     const data = [
         {
-            type: "Receipt",
+            type: "Aadhar Card",
             date: "4 Mar. 2023",
             time: "1:00 P.M. EST",
-            metadata: ":Text",
+            metadata: ":Name, :Address, :DOB,",
             user: "John Doe"
         },
         {
-            type: "Invoice",
+            type: "Bank Account Application",
             date: "12 Apr. 2023",
             time: "9:30 A.M. PST",
-            metadata: ":Invoice Number 12345",
+            metadata: ":Application No., :Status,...",
             user: "Jane Smith"
         },
         {
-            type: "Contract",
+            type: "Bank Account Application",
             date: "27 May 2023",
             time: "2:45 P.M. CST",
-            metadata: ":Agreement Terms",
+            metadata: ":Application No., :Status,...",
             user: "David Lee"
         },
         {
-            type: "Statement",
+            type: "Pan card",
             date: "8 Jun. 2023",
             time: "11:15 A.M. MST",
-            metadata: ":Account Summary",
+            metadata: ":Name, :PAN, :DOB, :Address",
             user: "Sarah Jones"
         },
         {
-            type: "Report",
+            type: "Pan card",
             date: "19 Jul. 2023",
             time: "4:00 P.M. EST",
-            metadata: ":Performance Metrics",
+            metadata: ":Name, :PAN, :DOB, :Address",
             user: "Michael Brown"
         },
         {
-            type: "Proposal",
+            type: "Driving License",
             date: "3 Aug. 2023",
             time: "10:30 A.M. PST",
-            metadata: ":Project Outline",
+            metadata: ":Name, :DOB, :BloodGroup , :DL No.",
             user: "Emily Davis"
         },
         {

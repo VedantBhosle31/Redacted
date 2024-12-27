@@ -3,11 +3,11 @@ import ClassCard from './classCard'
 
 const Sidebar = () => {
 
-    const data = [{ name: "Receipts", count: 592 },
-    { name: "Resume", count: 254 },
-    { name: "Passport", count: 218 },
-    { name: "Tax Statement", count: 43 },
-    { name: "Balance Sheet", count: 23 },
+    const data = [{ name: "Aadhar Card", count: 592 },
+    { name: "Credit card Application", count: 254 },
+    { name: "Bank Account Application", count: 218 },
+    { name: "Pan card", count: 43 },
+    { name: "Voter ID", count: 23 },
     { name: "Income Statement", count: 8 },
     { name: "Driving License", count: 2 },]
 
