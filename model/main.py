@@ -3,13 +3,14 @@ import pytesseract
 import pandas as pd
 import torch
 import numpy as np
-from transformers import LayoutLMForSequenceClassification, LayoutLMTokenizer
+from transformers import LayoutLMForSequenceClassification, LayoutLMTokenizer, LayoutLMConfig
 from PIL import Image
 from pdf2image import convert_from_path
 from datasets import Dataset
 from langchain_groq import ChatGroq
 import streamlit as st
 from dotenv import load_dotenv
+import json
 
 
 load_dotenv()
@@ -17,11 +18,22 @@ load_dotenv()
 api_key = os.getenv("GROQ_API_KEY")
 os.environ["GROQ_API_KEY"] = api_key
 
+def initialize_and_save_model():
+    with open('config.json', 'r') as f:
+        config_dict = json.load(f)
+
+    config = LayoutLMConfig.from_dict(config_dict)
+    model = LayoutLMForSequenceClassification(config)
+    
+    model.save_pretrained("./saved_model")
+
+initialize_and_save_model()
+
 
 pytesseract.pytesseract.tesseract_cmd = '/opt/homebrew/bin/tesseract'
 
-classes = ['invoice', 'resume', 'passport', 'Tax_Statement',
-           'balance_sheet', 'Income_Statement', 'Driving_License']
+classes = ['Aadhar Card', 'Bank Account Application', 'Pan card', 'Driving License',
+           'Email', 'Memo', 'Note', 'Document', 'Form']
 
 llm = ChatGroq(model="llama3-8b-8192")
 tokenizer = LayoutLMTokenizer.from_pretrained(
@@ -135,8 +147,7 @@ def predict(test_data):
                for i in range(len(classes))]
 
         if len(classification_results) != len(classes):
-            print(f"Error: Mismatched lengths - Results: {
-                  len(classification_results)}, Classes: {len(classes)}")
+            print(f"Error: Mismatched lengths - Results: {len(classification_results)}, Classes: {len(classes)}")
             return text, "Error: Mismatched results and classes", human_needed
 
         if any(value > 90 for value in res):
@@ -150,10 +161,10 @@ def predict(test_data):
 
 st.title("Document Classifier")
 
-uploaded_file = st.file_uploader("Choose a PDF file", type="pdf")
+uploaded_file = st.file_uploader("Choose a PDF", type=["pdf"])
 
 if uploaded_file is not None:
-    file_path = os.path.join("uploads", uploaded_file.name)
+    file_path = os.path.join("../uploads", uploaded_file.name)
     with open(file_path, "wb") as f:
         f.write(uploaded_file.getbuffer())
 
