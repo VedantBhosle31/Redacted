@@ -1,0 +1,52 @@
+:root, body{
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter';
+  overflow: hidden;
+}
+
+body{
+  background-color: #00000000;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+button{
+  border: none;
+}
+
+.btn{
+  height: fit-content;
+  padding: 0.75rem 2.5rem;
+  background-color: #42A2FA;
+  color: #ADD7FF;
+  border-radius: 4px;
+}
+
+input:focus{
+  outline: none;
+}
+
+table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th{
+  color: #AFB6C1;
+  text-align: left;
+}
+
+td{
+  border-bottom: 1px solid #E8ECF3;
+  padding: 0 1rem;
+  color: #7F8792
+}
+th{
+  padding: 1rem;
+  border-bottom: 1px solid #E8ECF3;
+}
